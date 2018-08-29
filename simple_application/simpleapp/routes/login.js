@@ -8,14 +8,15 @@ router.post('/', function(req, res, next) {
 
   if (username == "admin@admin.com" && password == "admin@admin.com") {
       console.log("valid");
+      req.session.user={username:username}
       res.redirect("/home");
 
   }else {
     console.log("invalid");
+    res.render("index",{message:"Please login with valid Credentials"})
 
   }
 
-  res.send("Got Data");
 });
 
 module.exports = router;
